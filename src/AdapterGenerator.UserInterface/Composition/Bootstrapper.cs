@@ -1,7 +1,6 @@
-﻿using System.Windows;
+﻿using System.Collections.Generic;
+using System.Windows;
 using Autofac;
-using Prism.Autofac;
-using Prism.Modularity;
 
 namespace AdapterGenerator.UserInterface.Composition {
   public class Bootstrapper : AutofacBootstrapper {
@@ -19,9 +18,13 @@ namespace AdapterGenerator.UserInterface.Composition {
     }
 
     protected override void ConfigureModuleCatalog() {
-      var catalog = (ModuleCatalog) ModuleCatalog;
-      catalog.AddModule(typeof(GeneratorModule.GeneratorModule));
-      catalog.AddModule(typeof(ThemeModule.ThemeSelectorModule));
+      base.ConfigureModuleCatalog(moduleCatalog);
+      moduleCatalog.AddModule<MyModule>();
+
+      Bootstrapper.Run(this, new List<AutofacModuleBase>()
+      {
+        // autofac modules
+      });
     }
   }
 }

@@ -4,7 +4,7 @@ using System.IO;
 namespace AdapterGenerator.Tests {
   public static class TestDataIndex {
     public static DirectoryInfo RootFolder
-      => new DirectoryInfo(Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase));
+      => new DirectoryInfo(Path.Combine(AppDomain.CurrentDomain.BaseDirectory));
 
     private static readonly Func<string, FileInfo> TestDataFile =
       fileName => new FileInfo(Path.Combine(RootFolder.FullName, fileName));
