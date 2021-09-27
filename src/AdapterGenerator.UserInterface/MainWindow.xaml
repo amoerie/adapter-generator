@@ -1,0 +1,48 @@
+﻿<controls:MetroWindow x:Class="AdapterGenerator.UserInterface.MainWindow"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:prism="http://prismlibrary.com/"
+                      xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                      ShowIconOnTitleBar="True"
+                      Title="Adapter Generator"
+                      ResizeMode="CanResizeWithGrip"
+                      WindowTransitionsEnabled="False"
+                      Width="1200" Height="800"
+                      WindowStartupLocation="CenterScreen">
+  <Window.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/Resources/Icons.xaml" />
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+  </Window.Resources>
+
+  <controls:MetroWindow.IconTemplate>
+    <DataTemplate>
+      <Grid Width="{TemplateBinding Width}"
+            Height="{TemplateBinding Height}"
+            Margin="0"
+            Background="Transparent"
+            RenderOptions.EdgeMode="Aliased"
+            RenderOptions.BitmapScalingMode="HighQuality">
+        <Rectangle Fill="White" Margin="6">
+          <Rectangle.OpacityMask>
+            <VisualBrush Visual="{StaticResource appbar_settings}" />
+          </Rectangle.OpacityMask>
+        </Rectangle>
+      </Grid>
+    </DataTemplate>
+  </controls:MetroWindow.IconTemplate>
+
+  <controls:MetroWindow.RightWindowCommands>
+    <controls:WindowCommands>
+      <StackPanel Orientation="Horizontal">
+        <ContentControl prism:RegionManager.RegionName="ThemeRegion" />
+      </StackPanel>
+    </controls:WindowCommands>
+  </controls:MetroWindow.RightWindowCommands>
+
+  <Grid>
+    <ContentControl prism:RegionManager.RegionName="MainRegion" />
+  </Grid>
+</controls:MetroWindow>
